@@ -23,14 +23,15 @@ if(isset($_POST['daftar'])){
 	$idpem = $ambilidpem2['idpem'];
 
 	$querylaundryan = pg_query("INSERT INTO laundryan (namaus, alamat, kelurahan, kontak, tarif, rincian, idpem) VALUES ('$namaus','$alamat','$kelurahan', '$kontak', '$tarif', '$rincian', $idpem)");
-	
+	$ambilidlau = pg_query("SELECT idlau FROM laundryan WHERE idpem = '$idpem'");
+	$ambilidlau2 = pg_fetch_array($ambilidlau);
+	$idlau = $ambilidlau2['idlau'];
+
 	// apakah query berhasil?
     if( $querypemilik && $querylaundryan ){
-		printf('yoshhaaaa');
-        //header('Location: daftarsiswa.php?status_edit=sukses');
+		header("Location: page_pemilik.php?idpem=".$idpem."&idlau=".$idlau."&status_daftar=sukses");
     } else {
-        //header('Location: daftarsiswa.php?status_edit=gagal');
-		printf('aw men');
+		header("Location: index.php?status_daftar=gagal");
     }
 
 
