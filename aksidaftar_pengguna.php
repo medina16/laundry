@@ -12,6 +12,8 @@ if(isset($_POST['daftar'])){
   	$querypengguna = pg_query("INSERT INTO pengguna (email, password, nama) VALUES ('$email','$pw','$nama')");
 	$ambiliduser = pg_query("SELECT iduser, email FROM pengguna WHERE email = '$email'");
 	$ambiliduser2 = pg_fetch_array($ambiliduser);
+    	$iduser = $ambiliduser2['iduser'];
+
 
 	// apakah query berhasil?
     if( $querypengguna){
