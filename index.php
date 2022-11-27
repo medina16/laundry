@@ -18,25 +18,22 @@
 		</ul>
 	</nav>
 
+	<?php if(isset($_GET['status_daftar'])): ?>
+	<p>
+		<?php
+			if ($_GET['status_daftar'] == 'gagal'){
+				echo "Pendaftaran gagal!";
+			} 
+		?>
+	</p>
+	<?php endif; ?>
+
 	<h4>Login</h4>
 	<nav>
 		<ul>
 			<li><a href="page_login.php">Login</a></li>
 		</ul>
 	</nav>
-
-
-	<?php if(isset($_GET['status'])): ?>
-	<p>
-		<?php
-			if ($_GET['status'] == 'sukses'){
-				echo "Pendaftaran siswa baru berhasil!";
-			} else if ($_GET['status'] == 'gagal'){
-				echo "Pendaftaran gagal!";
-			} 
-		?>
-	</p>
-	<?php endif; ?>
 
 	</body>
 </html>
