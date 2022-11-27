@@ -1,0 +1,28 @@
+CREATE TABLE pemilik(
+idpem serial,
+email varchar(255),
+password varchar(16),
+nama varchar(64),
+sex varchar(10),
+kontak varchar(64)
+);
+
+CREATE TABLE Ulasan(
+idlau int not null,
+idul serial,
+iduser int not null,
+tanggal timestamp without time zone,
+rating integer,
+review varchar(250)
+);
+
+CREATE TABLE laundryan(
+idlau serial,
+namaus varchar(255),
+alamat varchar(255),
+kelurahan varchar(64),
+kontak varchar(30),
+Tarif varchar(64),
+rincian varchar(200),
+idpem int not null
+);
