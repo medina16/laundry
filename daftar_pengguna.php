@@ -9,7 +9,7 @@
 		<h3>Pendaftaran Pengguna</h3>
 	</header>
 
-	<form action="prosespendaftaran.php" method="POST">
+	<form action="aksidaftar_pengguna.php" method="POST">
 		<fieldset>
 
 		<p>
