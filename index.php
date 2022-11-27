@@ -14,7 +14,7 @@
 	<nav>
 		<ul>
 			<li><a href="formpengguna.php">Daftar</a></li>
-			<li><a href="login.php">Login</a></li>
+			<li><a href="page_login.php">Login</a></li>
 		</ul>
 	</nav>
 
