@@ -10,10 +10,17 @@
 		<h3>Laundry di Kabupaten Bogor</h3>
 	</header>
 
-	<h4>Menu</h4>
+	<h4>Daftar</h4>
 	<nav>
 		<ul>
-			<li><a href="formpengguna.php">Daftar</a></li>
+			<li><a href="daftar_pengguna.php">Daftar sebagai pengguna</a></li>
+			<li><a href="daftar_pemilik.php">Daftar sebagai pemilik</a></li>
+		</ul>
+	</nav>
+
+	<h4>Login</h4>
+	<nav>
+		<ul>
 			<li><a href="page_login.php">Login</a></li>
 		</ul>
 	</nav>
