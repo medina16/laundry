@@ -93,6 +93,10 @@
         <input type="hidden" value="<?=$id?>" name="idpem" />
         <input type="submit" value="Edit Data" name="editpemilik" />
     </form>
+	<form action="hapusformpemilik.php" method="post">
+        <input type="hidden" value="<?=$id?>" name="idpem" />
+        <input type="submit" value="Hapus" name="hapuspemilik" />
+    </form>
 
 	<?php include("configbaru.php"); ?>
 
