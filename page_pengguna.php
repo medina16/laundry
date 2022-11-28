@@ -46,33 +46,53 @@
 
 	<?php include("configbaru.php"); ?>
 
-	<h3>Ulasan Pengguna</h3>
-	<?php 
-		$penilaian = pg_query("SELECT ROUND(AVG(rating)::numeric,2) FROM ulasan WHERE idlau = $idd");
-		$berapa = pg_fetch_array($penilaian);
-		echo"<h4>Overall Rating: ".$berapa['round']."/5</h4>";
-	?>
-
+	<body>
+	<header>
+	<h3>Data Laundry yang Tersedia di Kabupaten Bogor</h3>
 	<table border="1">
 	<tbody>
-	<?php
-		$queryulasan = pg_query("SELECT * FROM ulasan WHERE idlau=$idd ORDER BY tanggal DESC");
-		while($ulasan = pg_fetch_array($queryulasan)){
+		<?php
+		$querylau = pg_query("SELECT * FROM laundryan WHERE idlau=$idlau");
+		while($data_laundryan = pg_fetch_array($querylau)){
 			echo "<tr>";
-			echo "<td>
-					Ulasan dari <b>".$ulasan['iduser']."</b></br>
-					".$ulasan['tanggal']."
-				</td>";
-			echo "<td> 
-			<b>Rating:</b> ".$ulasan['rating']."/5</br>
-			<b>Ulasan:</b></br>
-			".nl2br($ulasan['review'])."
-			</td>";
+			echo "<td>Nama Usaha</td>";
+			echo "<td>".$data_laundryan['namaus']."</td>";
+			echo "</tr>";
+
+			echo "<tr>";
+			echo "<td>Alamat</td>";
+			echo "<td>".$data_laundryan['alamat']."</td>";
+			echo "</tr>";
+
+			echo "<tr>";
+			echo "<td>Kelurahan</td>";
+			echo "<td>".$data_laundryan['kelurahan']."</td>";
+			echo "</tr>";
+
+			echo "<tr>";
+			echo "<td>Kontak Telepon</td>";
+			echo "<td>".$data_laundryan['kontak']."</td>";
+			echo "</tr>";
+
+			echo "<tr>";
+			echo "<td>Tarif Laundry Kiloan Minimum</td>";
+			echo "<td>".$data_laundryan['tarif']."</td>";
+			echo "</tr>";
+
+			echo "<tr>";
+			echo "<td>Rincian Harga</td>";
+			echo "<td>".nl2br($data_laundryan['rincian'])."</td>";
 			echo "</tr>";
 			}
 		?>
 	</tbody>
 	</table>
+	
+	</br>
+	<form action="formulasan.php" method="post">
+        <input type="hidden" value="<?=$idpem?>" name="idpem" />
+        <input type="submit" value="Beri Ulasan" name="ulasan" />
+    </form>
 
 	<?php if(isset($_GET['status'])): ?>
 	<p>
@@ -84,7 +104,3 @@
 			} 
 		?>
 	</p>
-	<?php endif; ?>
-
-	</body>
-</html>
