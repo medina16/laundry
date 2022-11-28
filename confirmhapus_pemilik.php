@@ -2,7 +2,6 @@
 include("configbaru.php");
 if( isset($_POST['hapuspemilik']) ){
     $idpem = (int)$_POST['idpem'];
-    var_dump($_POST);
 } else {
     die("akses dilarang...");
 }
