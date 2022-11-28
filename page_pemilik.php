@@ -1,7 +1,7 @@
 <?php include("configbaru.php"); 
-	$id = $_GET['idpem']; 
-	$idd = $_GET['idlau']; 
-	$query = pg_query("SELECT * FROM pemilik WHERE idpem = $id");
+	$idpem = $_GET['idpem']; 
+	$idlau = $_GET['idlau']; 
+	$query = pg_query("SELECT * FROM pemilik WHERE idpem = $idpem");
 	$isiquery = pg_fetch_array($query);
 ?>
 
@@ -22,7 +22,7 @@
 	<table border="1">
 	<tbody>
 		<?php
-		$querypem = pg_query("SELECT * FROM pemilik WHERE idpem = $id");
+		$querypem = pg_query("SELECT * FROM pemilik WHERE idpem = $idpem");
 		while($data_pemilik = pg_fetch_array($querypem)){
 			echo "<tr>";
 			echo "<td>Email</td>";
@@ -52,7 +52,7 @@
 	<table border="1">
 	<tbody>
 		<?php
-		$querylau = pg_query("SELECT * FROM laundryan WHERE idlau=$idd");
+		$querylau = pg_query("SELECT * FROM laundryan WHERE idlau=$idlau");
 		while($data_laundryan = pg_fetch_array($querylau)){
 			echo "<tr>";
 			echo "<td>Nama Usaha</td>";
@@ -90,19 +90,19 @@
 	
 	</br>
 	<form action="editformpemilik.php" method="post">
-        <input type="hidden" value="<?=$id?>" name="idpem" />
-        <input type="submit" value="Edit Data" name="editpemilik" />
+        <input type="hidden" value="<?=$idpem?>" name="idpem" />
+        <input type="submit" value="Edit data" name="editpemilik" />
     </form>
-	<form action="aksihapus_pemilik.php" method="post">
-        <input type="hidden" value="<?=$id?>" name="idpem" />
-        <input type="submit" value="Hapus" name="hapuspemilik" />
+	<form action="confirmhapus_pemilik.php" method="post">
+        <input type="hidden" value="<?=$idpem?>" name="idpem" />
+        <input type="submit" value="Hapus akun" name="hapuspemilik" />
     </form>
 
 	<?php include("configbaru.php"); ?>
 
 	<h3>Ulasan Pengguna</h3>
 	<?php 
-		$penilaian = pg_query("SELECT ROUND(AVG(rating)::numeric,2) FROM ulasan WHERE idlau = $idd");
+		$penilaian = pg_query("SELECT ROUND(AVG(rating)::numeric,2) FROM ulasan WHERE idlau = $idlau");
 		$berapa = pg_fetch_array($penilaian);
 		echo"<h4>Overall Rating: ".$berapa['round']."/5</h4>";
 	?>
@@ -110,7 +110,7 @@
 	<table border="1">
 	<tbody>
 	<?php
-		$queryulasan = pg_query("SELECT * FROM ulasan WHERE idlau=$idd ORDER BY tanggal DESC");
+		$queryulasan = pg_query("SELECT * FROM ulasan WHERE idlau=$idlau ORDER BY tanggal DESC");
 		while($ulasan = pg_fetch_array($queryulasan)){
 			echo "<tr>";
 			echo "<td>
