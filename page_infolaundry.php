@@ -1,7 +1,13 @@
 <?php include("configbaru.php"); 
-	$idd = $_GET['idlau']; 
-	$query = pg_query("SELECT * FROM laundryan WHERE idlau = $idd");
+	$idlau = $_GET['idlau']; 
+	$query = pg_query("SELECT * FROM laundryan WHERE idlau = $idlau");
 	$isiquery = pg_fetch_array($query);
+
+	if(isset($_POST['ingpo'])){
+		$iduser = $_POST['iduser'];
+		//var_dump($_POST);
+	}
+
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +25,7 @@
 	<table border="1">
 	<tbody>
 		<?php
-		$querylau = pg_query("SELECT * FROM laundryan WHERE idlau=$idd");
+		$querylau = pg_query("SELECT * FROM laundryan WHERE idlau=$idlau");
 		while($data_laundryan = pg_fetch_array($querylau)){
 
 			echo "<tr>";
@@ -57,14 +63,14 @@
 	<h2>Ulasan Pengguna</h2>
 
 	<?php 
-	$penilaian = pg_query("SELECT ROUND(AVG(rating)::numeric,2) FROM ulasan WHERE idlau = $idd");
+	$penilaian = pg_query("SELECT ROUND(AVG(rating)::numeric,2) FROM ulasan WHERE idlau = $idlau");
 	$berapa = pg_fetch_array($penilaian);
 	echo"<h4>Overall Rating: ".$berapa['round']."/5</h4>"
 	?>
 
 	<form action="formulasan.php" method="post">
-        <input type="hidden" value="<?=$idd?>" name="idlau" />
-		<!--di sini juga tambahin type hidden isi id user-->
+        <input type="hidden" value="<?=$idlau?>" name="idlau" />
+		<input type="hidden" value="<?=$iduser?>" name="iduser" />
         <input type="submit" value="Beri ulasan" name="ulas" />
     </form>
 	</br>
@@ -72,11 +78,14 @@
 	<table border="1">
 	<tbody>
 	<?php
-		$queryulasan = pg_query("SELECT * FROM ulasan WHERE idlau=$idd ORDER BY tanggal DESC");
+		$queryulasan = pg_query("SELECT * FROM ulasan WHERE idlau=$idlau ORDER BY tanggal DESC");
 		while($ulasan = pg_fetch_array($queryulasan)){
+			$querynama = pg_query("SELECT nama FROM pengguna WHERE iduser = $ulasan[iduser]");
+			$ambilnama = pg_fetch_array($querynama);
+			$nama = $ambilnama['nama'];
 			echo "<tr>";
 			echo "<td>
-					Ulasan dari <b>".$ulasan['iduser']."</b></br>
+					Ulasan dari <b>".$nama."</b></br>
 					".$ulasan['tanggal']."
 				</td>";
 			echo "<td> 
