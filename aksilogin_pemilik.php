@@ -1,7 +1,7 @@
 <?php
 include("configbaru.php");
 // cek apakah tombol daftar sudah diklik atau blum?
-if(isset($_POST['Login'])){
+if(isset($_POST['Login_pemilik'])){
 
 	// ambil data dari formulir
 	$email = $_POST['email'];
