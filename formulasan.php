@@ -2,8 +2,7 @@
 include ("configbaru.php");
 if(isset($_POST['ulas'])){
     $idlau = $_POST['idlau'];
-	/* nanti tambahin id user */
-
+	$iduser = $_POST['iduser'];
     $query_laundryan = pg_query("SELECT * FROM laundryan WHERE idlau = $idlau");
     $isiquery_laundryan = pg_fetch_array($query_laundryan);
 
@@ -28,6 +27,7 @@ if(isset($_POST['ulas'])){
 	<form action="aksiulas_pelanggan.php" method="POST">
 		<fieldset>
 		<input type="hidden" name="idlau" value="<?=$idlau?>"/>
+		<input type="hidden" name="iduser" value="<?=$iduser?>"/>
 		<p>
 			<label for="rating">Rating: </label>
 			<label><input type="radio" name="rating" value="1"> 1/5</label>
