@@ -9,7 +9,7 @@
 		<h3>Login Pengguna</h3>
 	</header>
 
-	<form action="prosespendaftaran.php" method="POST">
+	<form action="aksilogin_pengguna.php" method="POST">
 		<fieldset>
 
 		<p>
@@ -29,7 +29,7 @@
 	</p>
 	<?php endif; ?>
 		</p>
-			<input type="submit" value="login" name="login" />
+			<input type="submit" value="Login" name="Login_user" />
 		</p>
 		</fieldset>
 	</form>
@@ -57,7 +57,7 @@
 			?>
 		</p>
 		<?php endif; ?>
-			<input type="submit" value="Login" name="Login" />
+			<input type="submit" value="Login" name="Login_pemilik" />
 		</p>
 
 		</fieldset>
