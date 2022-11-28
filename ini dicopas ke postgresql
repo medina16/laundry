@@ -35,3 +35,14 @@ Tarif varchar(64),
 rincian varchar(200),
 idpem serial not null
 );
+
+ALTER TABLE Pemilik ADD CONSTRAINT Pemilik_IDpem_PK PRIMARY KEY(IDpem);
+ALTER TABLE Pengguna ADD CONSTRAINT Pengguna_IDuser_PK PRIMARY KEY(IDuser);
+ALTER TABLE Laundryan ADD CONSTRAINT Laundryan_IDlau_PK PRIMARY KEY(IDlau),
+CONSTRAINT Laundryan_IDpem_FK FOREIGN KEY(IDpem) 
+REFERENCES Pemilik(IDpem);
+ALTER TABLE Ulasan ADD CONSTRAINT Ulasan_IDul_PK PRIMARY KEY(IDul),
+CONSTRAINT Ulasan_IDuser_FK FOREIGN KEY(IDuser) 
+REFERENCES Pengguna(IDuser),
+CONSTRAINT Ulasan_IDlau_FK FOREIGN KEY(IDlau) 
+REFERENCES Laundryan(Idlau);
