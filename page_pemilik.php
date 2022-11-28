@@ -93,7 +93,7 @@
         <input type="hidden" value="<?=$id?>" name="idpem" />
         <input type="submit" value="Edit Data" name="editpemilik" />
     </form>
-	<form action="hapusformpemilik.php" method="post">
+	<form action="aksihapus_pemilik.php" method="post">
         <input type="hidden" value="<?=$id?>" name="idpem" />
         <input type="submit" value="Hapus" name="hapuspemilik" />
     </form>
