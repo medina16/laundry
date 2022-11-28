@@ -6,11 +6,11 @@ if(isset($_POST['submit'])){
 
 	var_dump($_POST);
 	$idlau =  $_POST['idlau'];
-	/*janlup id user*/
+	$iduser =  $_POST['iduser'];
 	$rating =  $_POST['rating'];
 	$review =  $_POST['review'];
 	
-	$queryulasan = pg_query("INSERT INTO ulasan(idlau,iduser,rating,review,tanggal) VALUES($idlau,3,'$rating','$review',localtimestamp(0));");
+	$queryulasan = pg_query("INSERT INTO ulasan(idlau,iduser,rating,review,tanggal) VALUES($idlau,$iduser,'$rating','$review',localtimestamp(0));");
 	
 	// apakah query berhasil?
     if( $queryulasan ){
