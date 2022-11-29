@@ -1,0 +1,28 @@
+<?php
+include("configbaru.php");
+
+// cek apakah tombol edit sudah diklik atau blum?
+if(isset($_POST['edit'])){
+
+	// ambil id dari query string
+	$iduser = $_POST['iduser'];
+	$nama = $_POST['nama'];
+	$email = $_POST['email'];
+	$pw = $_POST['password'];
+	
+	var_dump($_POST);
+
+	// buat query pengeditan
+  	$query_pengguna = pg_query("UPDATE pengguna SET nama = '$nama', email = '$email', password = '$pw' WHERE iduser=$iduser");
+
+	// apakah query berhasil?
+    if( $query_pengguna){
+		header("Location: page_pengguna.php?iduser=".$iduser."&status_edit=sukses");
+    } else {
+		header("Location: page_pengguna.php?iduser=".$iduser."&status_edit=gagal");
+    }
+
+} else {
+	die("Akses dilarang...");
+}
+?>
