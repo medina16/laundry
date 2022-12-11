@@ -1,67 +1,99 @@
+<?php
+    session_start();
+    if(isset($_SESSION['idpem']) && isset($_SESSION['idlau'])){
+		header("Location:page_pemilik.php");
+	} else if(isset($_SESSION['iduser'])){
+		header("Location:page_pengguna.php");
+	}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Formulir Pendaftaran Siswa Baru | SMK Coding</title>
+	<title>Laundry - Login</title>
+	<link rel="stylesheet" href="stylesheet.css">
 </head>
 
 <body>
+	
 	<header>
-		<h3>Login Pengguna</h3>
+		<div class="container">
+			<h2>Login</h2>
+		</div>
 	</header>
 
-	<form action="aksilogin_pengguna.php" method="POST">
-		<fieldset>
+		<div class="wrapper-login">
+			<div class="container">
+				<div class="tipe-login">
+					<h3>Pengguna</h3>
+					<form action="aksilogin_pengguna.php" method="POST">
+						<fieldset>
+						<?php if (isset($_GET['cek_user'])==FALSE){ echo "</br>";}?>
+						<p>
+							<label for="email">E-mail</label>
+						</br>
+							<input type="text" name="email" />
+						</p>
+						
+						<p>
+							<label for="password">Kata Sandi</label>
+						</br>
+							<input type="password" name="password" />
+						</p>
+						
+							<?php if(isset($_GET['cek_user'])): ?>
+					<p>
+						<?php
+							if ($_GET['cek_user'] == 'salah'){
+								echo "<div class=salahcuy> E-mail atau kata sandi salah!</div>";
+							} 
+						?>
+					</p>
+					<?php endif; ?>
+						<p>
+							<input type="submit" value="Login" name="Login_user" />
+							&emsp;Belum punya akun? <a href="daftar_pengguna.php">Daftar </a>
+						</p>
+						</fieldset>
+					</form>
+				</div>
+				
+				<div class="tipe-login">
+					<h3>Pemilik Usaha</h3>
+					<form action="aksilogin_pemilik.php" method="POST">
+						<fieldset>
+						<?php if (isset($_GET['cek_owner'])==FALSE){ echo "</br>";}?>
+						<p>
+							<label for="email">E-mail</label>
+						</br>
+							<input type="text" name="email" />
+						</p>
+						<p>
+							<label for="password">Kata Sandi</label>
+						</br>
+							<input type="password" name="password" />
+						</p>
 
-		<p>
-			<label for="email">E-mail: </label>
-			<input type="text" name="email" placeholder="alamat e-mail" />
-		</p>
-		<p>
-			<label for="password">Kata Sandi: </label>
-			<input type="password" name="password" placeholder="password" />
-			<?php if(isset($_GET['cek_user'])): ?>
-	<p>
-		<?php
-			if ($_GET['cek_user'] == 'salah'){
-				echo "E-mail atau kata sandi salah!";
-			} 
-		?>
-	</p>
-	<?php endif; ?>
-		</p>
-			<input type="submit" value="Login" name="Login_user" />
-		</p>
-		</fieldset>
-	</form>
+						<?php if(isset($_GET['cek_owner'])): ?>
+						<p>
+							<?php
+								if ($_GET['cek_owner'] == 'salah'){
+									echo "<div class=salahcuy>E-mail atau kata sandi salah!</div>";
+								} 
+							?>
+						</p>
+						<?php endif; ?>
+							<input type="submit" value="Login" name="Login_pemilik" />
+							&emsp;Belum punya akun? <a href="daftar_pemilik.php">Daftar </a>
+						</p>
 
+						</fieldset>
+					</form>
+				</div>
+			</div>
+		</div>
+	
 
-	<h3>Login Pemilik Usaha</h3>
-	<form action="aksilogin_pemilik.php" method="POST">
-		<fieldset>
+</body>
 
-		<p>
-			<label for="email">E-mail: </label>
-			<input type="text" name="email" placeholder="alamat e-mail" />
-		</p>
-		<p>
-			<label for="password">Kata Sandi: </label>
-			<input type="password" name="password" placeholder="password" />
-		</p>
-
-		<?php if(isset($_GET['cek_owner'])): ?>
-		<p>
-			<?php
-				if ($_GET['cek_owner'] == 'salah'){
-					echo "E-mail atau kata sandi salah!";
-				} 
-			?>
-		</p>
-		<?php endif; ?>
-			<input type="submit" value="Login" name="Login_pemilik" />
-		</p>
-
-		</fieldset>
-	</form>
-
-	</body>
 </html>
