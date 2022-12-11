@@ -1,52 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Formulir Pendaftaran Siswa Baru | SMK Coding</title>
+	<title>Laundry - Daftar Sebagai Pemilik Usaha</title>
+	<link rel="stylesheet" href="stylesheet.css">
 </head>
 
 <body>
 	<header>
-		<h3>Pendaftaran Pemilik Usaha Laundry</h3>
+		<div class="container">
+			<h2>Pendaftaran Pemilik Usaha</h2>
+		</div>
 	</header>
-
+	
+	<div class="daptar">
 	<form action="aksidaftar_pemilik.php" method="POST">
 		<fieldset>
 
-		<h4>Data Pemilik</h4>
+		<h4 style="text-align:center;">Data Pemilik</h4>
+		
+		<p> <label for="email">E-mail</label></br>
+		<input type="text" name="email" placeholder="alamat e-mail" maxlength="255" required/></p>
+
+		<p><label for="password">Kata Sandi</label></br>
+		<input type="password" name="password" placeholder="password" maxlength="16" required/></p>
+
+		<p><label for="nama">Nama Pemilik</label></br>
+		<input type="text" name="nama" placeholder="nama lengkap" maxlength="64" required/></p>
+
 		<p>
-			<label for="email">E-mail: </label>
-			<input type="text" name="email" placeholder="alamat e-mail" />
-		</p>
-		<p>
-			<label for="password">Kata Sandi: </label>
-			<input type="password" name="password" placeholder="password" />
-		</p>
-		<p>
-			<label for="nama">Nama Pemilik: </label>
-			<input type="text" name="nama" placeholder="nama lengkap" />
-		</p>
-		<p>
-			<label for="jenis_kelamin">Jenis Kelamin: </label>
-			<label><input type="radio" name="jenis_kelamin" value="laki-laki"> Laki-laki</label>
+			<label for="jenis_kelamin">Jenis Kelamin</label></br>
+			<label><input type="radio" name="jenis_kelamin" value="laki-laki" required> Laki-laki</label>
 			<label><input type="radio" name="jenis_kelamin" value="perempuan"> Perempuan</label>
 		</p>
 		<p>
-			<label for="kontak">Kontak: </label>
-			<input type="text" name="kontak" placeholder="nomor telepon" />
+			<label for="kontakpemilik">Kontak</label></br>
+			<input type="text" name="kontakpemilik" placeholder="nomor telepon" maxlength="64" required/>
 		</p>
 
-		<h4>Data Usaha</h4>
+		</br>
+		<h4 style="text-align:center;">Data Usaha</h4>
 		<p> 
-			<label for="lname">Nama Usaha: </label>
-			<input type="text" name="a" placeholder="nama usaha laundry" />
+			<label for="namaus">Nama Usaha</label></br>
+			<input type="text" name="namaus" placeholder="nama usaha laundry" maxlength="255" required/>
 		</p>
 		<p>
-			<label for="alamat">Alamat: </label>
-			<textarea name="b" placeholder="alamat usaha"></textarea>
+			<label for="alamat">Alamat</label></br>
+			<textarea name="alamat" placeholder="alamat usaha" maxlength="255" required></textarea>
 		</p>
 		<p>
-			<label for="kelurahan">Kelurahan:</label>
-			<select id="kelurahan" name="c">
+			<label for="kelurahan">Kelurahan</label></br>
+			<select id="kelurahan" name="kelurahan" required>
+				<option value="" disabled selected hidden>Kelurahan</option>
   				<option value="Cicadas">Cicadas</option>
   				<option value="Cibanteng">Cibanteng</option>
   				<option value="Ciawi">Ciawi</option>
@@ -65,24 +69,32 @@
 			</select>
 		</p>
 		<p>
-			<label for="kontak">Kontak: </label>
-			<input type="text" name="d" placeholder="nomor telepon" />
+			<label for="kontaklaundry">Kontak</label></br>
+			<input type="text" name="kontaklaundry" placeholder="nomor telepon" maxlength="30" required/>
 		</p>
 		<p>
-			<label for="price">Tarif Laundry Kiloan Minimum: </label>
-			<input type="text" name="e" placeholder="Rp/kg" />
+			<label for="tarif">Tarif Kiloan Minimum</label></br>
+			<input type="text" name="tarif" placeholder="Rp/kg" required/>
 		</p>
 		<p>
-			<label for="deskripsi">Rincian: </label>
-			<textarea name="f" placeholder="deskripsi usaha laundry dan daftar tarif laundry lengkap"></textarea>
+			<label for="rincian">Rincian Harga</label></br>
+			<textarea name="rincian" placeholder="daftar tarif laundry lengkap" maxlength="200" required></textarea>
 		</p>
 		<p>
 			<input type="submit" value="Daftar" name="daftar" />
+			<a class="button-putih" href="
+					<?php if (isset($_SERVER['HTTP_REFERER'])) {
+						echo "$_SERVER[HTTP_REFERER]";
+					} else {
+						echo "index.php";}?>
+			">Batal
+			</a>
 		</p>
 		
 
 		</fieldset>
 	</form>
+	</div>
 
 	</body>
 </html>
