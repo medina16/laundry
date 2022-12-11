@@ -1,0 +1,371 @@
+/* montserrat-regular - latin */
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/montserrat-v25-latin-regular.eot'); /* IE9 Compat Modes */
+    src: local(''),
+         url('../fonts/montserrat-v25-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/montserrat-v25-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../fonts/montserrat-v25-latin-regular.woff') format('woff'), /* Modern Browsers */
+         url('../fonts/montserrat-v25-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('../fonts/montserrat-v25-latin-regular.svg#Montserrat') format('svg'); /* Legacy iOS */
+}
+
+/* montserrat-500 - latin */
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    src: url('../fonts/montserrat-v25-latin-500.eot'); /* IE9 Compat Modes */
+    src: local(''),
+         url('../fonts/montserrat-v25-latin-500.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/montserrat-v25-latin-500.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../fonts/montserrat-v25-latin-500.woff') format('woff'), /* Modern Browsers */
+         url('../fonts/montserrat-v25-latin-500.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('../fonts/montserrat-v25-latin-500.svg#Montserrat') format('svg'); /* Legacy iOS */
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+    font-weight: 600;
+    color:rgb(76, 182, 163);
+}
+
+a:hover{
+    transition:0.7s;
+    color:rgb(44, 60, 65);
+}
+
+body{
+    background-color: rgb(255, 255, 255);
+    color:rgb(9, 39, 39);
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat";
+}
+
+.container{
+    max-width:1170px;
+    padding:0px 15px;
+    margin:0px auto;
+}
+
+.container h2 {
+    text-align: center;
+    font-size:48px;
+}
+
+/* login */
+
+.wrapper-login {
+    text-align: left;
+    background-color:rgb(8, 79, 55);
+    margin-left:300px;
+}
+
+.wrapper-login h3 {
+    text-align: center;
+    font-size:22px;
+    background-color:rgb(76, 182, 163);
+    margin-bottom:0px;
+    margin-left:2px;
+    padding:15px 15px;
+    width:396px;
+    color:rgb(255, 255, 255);
+    border-top-left-radius:6px;
+    border-top-right-radius:6px;
+}
+
+.tipe-login {
+    display:block;
+    float: left;
+    width: 400px;
+    height:350px;
+    margin:10px 15px;
+}
+
+.wrapper-login fieldset{
+    height:270px;
+    padding: 10px 40px 10px 40px;
+    border: 1px rgb(184, 201, 205) solid;
+    border-top:0px;
+    border-bottom-right-radius:6px;
+    border-bottom-left-radius:6px;
+}
+
+/*salah info login*/
+
+.salahcuy{
+    width:90%;
+    color:rgb(32, 148, 127);
+}
+
+/* nav */
+
+.pojok{
+    text-align:center;
+    margin: 10px;
+}
+
+.pojok a{
+    text-decoration: none;
+    margin-left:15px;
+    font-weight: 600;
+    color:rgb(76, 182, 163);
+}
+
+.pojok a:hover{
+    color:rgb(44, 60, 65);
+    transition:1.3s;
+}
+
+/* konten */
+
+.konten h3{
+    text-align: center;
+    margin-top:-6px;
+}
+
+.konten{
+    padding: 30px 50px;
+    border: 1px rgb(184, 201, 205) solid;
+    border-radius:6px;
+    width:600px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom:40px;
+}
+
+.konten input[type=submit]{
+    display:block;
+    float:left;
+    margin: 0px 10px;
+}
+
+/* tabel (umum) */
+
+table, td{
+    border:1px solid rgb(222, 229, 232);
+    border-collapse: collapse;
+    padding:13px;
+    table-layout:fixed
+}
+
+td{
+    max-width:200px;
+    word-wrap: break-word;
+}
+
+table{
+    margin-left:auto;
+    margin-right:auto;
+    width:500px;
+    border-collapse: collapse;
+}
+
+/* untuk tabel data pemilik, pengguna, laundry*/
+
+.ket{
+    background-color:rgb(153, 199, 190);
+    color:rgb(45, 71, 67);
+    font-weight: 600;
+    width:160px;
+    border:2px solid white;
+}
+
+/* untuk tabel ulasan */
+
+.ulasan{
+    border:2px solid white;
+    background-color:rgb(153, 199, 190);
+    color:rgb(45, 71, 67);
+    width:200px;
+    text-align: justify;
+}
+
+.ulasan input[type=submit]{
+    font-size:11px;
+    width:70px;
+    margin-top:10px;
+    margin-right:10px;
+    margin-left:0px;
+}
+
+label{
+    margin-bottom:100px;
+}
+
+/* form non-login */
+
+.daptar fieldset{
+    padding: 30px 50px;
+    border: 1px rgb(184, 201, 205) solid;
+    border-radius:6px;
+    max-width:600px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom:100px;
+}
+
+input[type=password], input[type=text],textarea,select{
+    font-weight:100;
+    border:none;
+    padding:8px;
+    width:100%;
+    background-color:rgb(222, 229, 232);
+    border-radius:7px;
+    color:rgb(68, 81, 106);
+    margin-top:5px;
+    font-family: "Montserrat";
+}
+
+input[type="radio"]{
+    appearance: none;
+	width: 15px;
+	height: 15px;
+	border: 2px solid rgb(186, 198, 203);
+	border-radius: 50%;
+	background-clip: content-box;
+	padding: 2.5px;
+}
+
+input[type="radio"]:checked {
+	background-color: rgb(76, 182, 163);
+}
+
+textarea{
+    height:200px;
+}
+
+input[type=submit]{
+    color:rgb(44, 60, 65);
+    font-weight:600;
+    border-radius:7px;
+    border:none;
+    padding:8px 15px;
+    background-color:rgb(76, 182, 163);
+    margin-top:10px;
+    font-weight:700;
+    font-family: "Montserrat";
+}
+
+input[type=submit]:hover {
+    color:rgb(76, 182, 163);
+    background-color:rgb(44, 60, 65);
+    transition:0.7s;
+    cursor:pointer;
+}
+
+/* tombol untuk memberi ulasan */
+
+.tombolulas input[type=submit]{
+    float:right;
+    margin-top:7px;
+    font-size:11px;
+    margin-right:-1px;
+}
+
+.aksi-ulas{
+    color:white;
+}
+
+/* hyperlink bentuk tombol */
+
+.button-putih{
+    font-size: 13px;
+    margin-left:10px;
+    background-color: rgb(255, 255, 255);
+    border:1px solid rgb(186, 198, 203);
+    border-radius:7px;
+    padding:8px 15px;
+}
+
+.button-putih:hover{
+    font-size: 13px;
+    margin-left:10px;
+    background-color: rgb(186, 198, 203);
+    border:1px solid rgb(186, 198, 203);
+    border-radius:7px;
+    padding:8px 15px;
+    color:white;
+}
+
+/* khusus di halaman gagal daftar*/
+
+.aksi-gagal{
+    text-align: center;
+}
+
+.aksi-gagal a{
+    display:block;
+    margin:auto;
+    margin-bottom:9px;
+    width:250px;
+}
+
+.aksi-gagal a:hover{
+    display:block;
+    margin:auto;
+    margin-bottom:9px;
+    width:250px;
+}
+
+/* khusus di bawah tabel data pengguna, laundry*/
+
+.aksi-akun{
+    display:block;
+    margin-left:130px;
+    width:100%;
+}
+
+/* seacrh bar laundry */
+
+.cari input, .cari select{
+    width:135px;
+    margin-right:3px;
+    margin-top:0px;
+    font-size:11px;
+    margin-bottom:10px;
+}
+
+.cari input[type="submit"]{
+    text-align: center;
+    font-size:11px;
+    padding: 7.5px 0px;
+    width:67.5px;
+    float:right;  
+    font-size:12px;
+    margin-right:0px;
+}
+
+/*tabel hasil search laundry*/
+
+.listlaundry td{
+    padding-left:30px;
+}
+
+.listlaundry a{
+    float:right;
+    margin-right:50px;
+    margin-top:-40px;
+    padding: 13px 30px;
+}
+
+.listlaundry a:hover{
+    float:right;
+    margin-right:50px;
+    margin-top:-40px;
+    padding: 13px 30px;
+}
+
+.listlaundry h4{
+    font-size:15px;
+    color:rgb(76, 182, 163);
+}
