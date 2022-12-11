@@ -1,26 +1,27 @@
 <?php 
 include ("configbaru.php");
-if(isset($_POST['editpengguna'])){
-    $iduser = (int)$_POST['iduser'];
+
+	session_start();
+	if($_SESSION['iduser']!=NULL){
+		$iduser = $_SESSION["iduser"]; 
+	} else {
+		header("Location:page_login.php");
+	}
+
     $query_pengguna = pg_query("SELECT * FROM pengguna WHERE iduser = $iduser");
     $isiquery_pengguna = pg_fetch_array($query_pengguna);
 
-
-} else {
-	//header("Location: page_pemilik.php");
-	die("Akses dilarang...");
-}
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Formulir Pendaftaran Siswa Baru | SMK Coding</title>
+<title>Laundry - Edit Data</title>
 </head>
 
 <body>
 	<header>
-		<h3>Pengeditan Data Pengguna</h3>
+		<h3>Pengeditan Data</h3>
 	</header>
 
 	<form action="aksiedit_pengguna.php" method="POST">
@@ -46,7 +47,6 @@ if(isset($_POST['editpengguna'])){
 			<input type="submit" value="Edit" name="edit" />
 		</p>
 		
-
 		</fieldset>
 	</form>
 
