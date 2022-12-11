@@ -1,24 +1,28 @@
 <?php 
 include ("configbaru.php");
-if(isset($_POST['editpemilik'])){
-    $idpem = (int)$_POST['idpem'];
-    $query_pemilik = pg_query("SELECT * FROM pemilik WHERE idpem = $idpem");
-    $isiquery_pemilik = pg_fetch_array($query_pemilik);
+session_start();
+	if($_SESSION['idpem']!=NULL && $_SESSION['idlau']!=NULL){
+		
+		$idpem = $_SESSION['idpem']; 
+		$idlau = $_SESSION['idlau']; 
+		
+    	$query_pemilik = pg_query("SELECT * FROM pemilik WHERE idpem = $idpem");
+    	$isiquery_pemilik = pg_fetch_array($query_pemilik);
 
-    $query_laundryan = pg_query("SELECT * FROM laundryan WHERE idpem = $idpem");
-    $isiquery_laundryan = pg_fetch_array($query_laundryan);
-	$idlau = $isiquery_laundryan['idlau'];
+    	$query_laundryan = pg_query("SELECT * FROM laundryan WHERE idpem = $idpem");
+    	$isiquery_laundryan = pg_fetch_array($query_laundryan);
+	
 
-} else {
-	//header("Location: page_pemilik.php");
-	die("Akses dilarang...");
-}
+	} else {
+		header("Location:page_login.php");
+	}
+
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Formulir Pendaftaran Siswa Baru | SMK Coding</title>
+<title>Laundry - Edit Data</title>
 </head>
 
 <body>
