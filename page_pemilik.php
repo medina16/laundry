@@ -1,144 +1,159 @@
-<?php include("configbaru.php"); 
-	$idpem = $_GET['idpem']; 
-	$idlau = $_GET['idlau']; 
-	$query = pg_query("SELECT * FROM pemilik WHERE idpem = $idpem");
-	$isiquery = pg_fetch_array($query);
+<?php include("configbaru.php");
+	session_start();
+	if($_SESSION['idpem']!=NULL && $_SESSION['idlau']!=NULL){
+
+		$idpem = $_SESSION['idpem']; 
+		$idlau = $_SESSION['idlau'];
+
+		$querypem = pg_query("SELECT * FROM pemilik WHERE idpem = $idpem");
+		$querylau = pg_query("SELECT * FROM laundryan WHERE idlau=$idlau");
+
+		$data_pemilik = pg_fetch_array($querypem);
+		$data_laundryan = pg_fetch_array($querylau);
+
+	} else {
+		header("Location:page_login.php");
+	}
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Pendaftaran Siswa Baru | SMK Coding</title>
+	<title>Laundry - Beranda</title>
+	<link rel="stylesheet" href="stylesheet.css">
 </head>
 
 <body>
 	<header>
-		<h1>Laundry</h1>
-		<h3>Laundry di Kabupaten Bogor</h3>
+		<div class="container">
+			<h2>Selamat datang <i><?php echo"$data_pemilik[nama]"?></i>!</h2>
+		</div>
 	</header>
+	<div class="pojok">
+		<a href="page_pemilik.php">BERANDA</a>
+		<a href="aksilogout.php">LOGOUT</a>
+	</div>
+
+	<div class="konten">
+		<h3>Data Pemilik</h3>
+		<table>
+		<tbody>
+			<?php
+				echo "<tr>";
+				echo "<td class=ket>Email</td>";
+				echo "<td class=isi>".$data_pemilik['email']."</td>";
+				echo "</tr>";
+
+				echo "<tr>";
+				echo "<td class=ket>Nama Pemilik</td>";
+				echo "<td class=isi>".$data_pemilik['nama']."</td>";
+				echo "</tr>";
+
+				echo "<tr>";
+				echo "<td class=ket>Jenis Kelamin</td>";
+				echo "<td class=isi>".$data_pemilik['sex']."</td>";
+				echo "</tr>";
+
+				echo "<tr>";
+				echo "<td class=ket>Kontak</td>";
+				echo "<td class=isi>".$data_pemilik['kontak']."</td>";
+				echo "</tr>";
+			?>
+		</tbody>
+		</table>
+		</br></br>
+
+		<h3>Data Usaha</h3>
+		<table>
+		<tbody>
+			<?php
+				echo "<tr>";
+				echo "<td class=ket>Nama Usaha</td>";
+				echo "<td class=isi>".$data_laundryan['namaus']."</td>";
+				echo "</tr>";
+
+				echo "<tr>";
+				echo "<td class=ket>Alamat</td>";
+				echo "<td class=isi>".$data_laundryan['alamat']."</td>";
+				echo "</tr>";
+
+				echo "<tr>";
+				echo "<td class=ket>Kelurahan</td>";
+				echo "<td class=isi>".$data_laundryan['kelurahan']."</td>";
+				echo "</tr>";
+
+				echo "<tr>";
+				echo "<td class=ket>Kontak Telepon</td>";
+				echo "<td class=isi>".$data_laundryan['kontak']."</td>";
+				echo "</tr>";
+
+				echo "<tr>";
+				echo "<td class=ket>Tarif Kiloan Minimum</td>";
+				echo "<td class=isi>Rp".$data_laundryan['tarif']."/kg</td>";
+				echo "</tr>";
+
+				echo "<tr>";
+				echo "<td class=ket>Rincian Harga</td>";
+				echo "<td class=isi>".nl2br($data_laundryan['rincian'])."</td>";
+				echo "</tr>";
+			?>
+		</tbody>
+		</table>
 	
+		</br>
+		</br>
+			<div class="aksi-akun">
+				<a class="button-putih" href=editformpemilik.php>Edit akun</a>
+				<a class="button-putih" href=confirmhapus_pemilik.php>Hapus akun</a>
+			</div>
+		</br>
+		</br>
+	</div>
 
-	<h3>Data Pemilik</h3>
-	<table border="1">
-	<tbody>
-		<?php
-		$querypem = pg_query("SELECT * FROM pemilik WHERE idpem = $idpem");
-		while($data_pemilik = pg_fetch_array($querypem)){
-			echo "<tr>";
-			echo "<td>Email</td>";
-			echo "<td>".$data_pemilik['email']."</td>";
-			echo "</tr>";
-
-			echo "<tr>";
-			echo "<td>Nama Pemilik</td>";
-			echo "<td>".$data_pemilik['nama']."</td>";
-			echo "</tr>";
-
-			echo "<tr>";
-			echo "<td>Jenis Kelamin</td>";
-			echo "<td>".$data_pemilik['sex']."</td>";
-			echo "</tr>";
-
-			echo "<tr>";
-			echo "<td>Kontak</td>";
-			echo "<td>".$data_pemilik['kontak']."</td>";
-			echo "</tr>";
-			}
-		?>
-	</tbody>
-	</table>
-
-	<h3>Data Usaha</h3>
-	<table border="1">
-	<tbody>
-		<?php
-		$querylau = pg_query("SELECT * FROM laundryan WHERE idlau=$idlau");
-		while($data_laundryan = pg_fetch_array($querylau)){
-			echo "<tr>";
-			echo "<td>Nama Usaha</td>";
-			echo "<td>".$data_laundryan['namaus']."</td>";
-			echo "</tr>";
-
-			echo "<tr>";
-			echo "<td>Alamat</td>";
-			echo "<td>".$data_laundryan['alamat']."</td>";
-			echo "</tr>";
-
-			echo "<tr>";
-			echo "<td>Kelurahan</td>";
-			echo "<td>".$data_laundryan['kelurahan']."</td>";
-			echo "</tr>";
-
-			echo "<tr>";
-			echo "<td>Kontak Telepon</td>";
-			echo "<td>".$data_laundryan['kontak']."</td>";
-			echo "</tr>";
-
-			echo "<tr>";
-			echo "<td>Tarif Laundry Kiloan Minimum</td>";
-			echo "<td>".$data_laundryan['tarif']."</td>";
-			echo "</tr>";
-
-			echo "<tr>";
-			echo "<td>Rincian Harga</td>";
-			echo "<td>".nl2br($data_laundryan['rincian'])."</td>";
-			echo "</tr>";
-			}
-		?>
-	</tbody>
-	</table>
-	
-	</br>
-	<form action="editformpemilik.php" method="post">
-        <input type="hidden" value="<?=$idpem?>" name="idpem" />
-        <input type="submit" value="Edit data" name="editpemilik" />
-    </form>
-	<form action="confirmhapus_pemilik.php" method="post">
-        <input type="hidden" value="<?=$idpem?>" name="idpem" />
-        <input type="submit" value="Hapus akun" name="hapuspemilik" />
-    </form>
-
-	<?php include("configbaru.php"); ?>
+	<div class="konten">
 
 	<h3>Ulasan Pengguna</h3>
+
 	<?php 
+	$queryulasan = pg_query("SELECT * FROM ulasan WHERE idlau=$idlau ORDER BY tanggal DESC");
+	if(pg_num_rows($queryulasan) == 0) {
+		// kalo belom ada ulasan yha gausah tampilin apa2 selain ini
+		echo "<p>Belum ada ulasan.</p>";
+	} else {
+		// kalo ada ulasan tampilin rata2 ulasan sama ulasan2nya
 		$penilaian = pg_query("SELECT ROUND(AVG(rating)::numeric,2) FROM ulasan WHERE idlau = $idlau");
 		$berapa = pg_fetch_array($penilaian);
-		echo"<h4>Overall Rating: ".$berapa['round']."/5</h4>";
+		echo"<b>Overall Rating:</b> ".$berapa['round']."/5";
 	?>
-
-	<table border="1">
+	
+	<table >
 	<tbody>
 	<?php
-		$queryulasan = pg_query("SELECT * FROM ulasan WHERE idlau=$idlau ORDER BY tanggal DESC");
 		while($ulasan = pg_fetch_array($queryulasan)){
+			$querynama = pg_query("SELECT nama FROM pengguna WHERE iduser = $ulasan[iduser]");
+			$ambilnama = pg_fetch_array($querynama);
+			$nama = $ambilnama['nama'];
 			echo "<tr>";
-			echo "<td>
-					Ulasan dari <b>".$ulasan['iduser']."</b></br>
+			echo "<td class=ulasan>
+					Ulasan dari </br><b>".$nama."</b></br>
 					".$ulasan['tanggal']."
 				</td>";
-			echo "<td> 
-			<b>Rating:</b> ".$ulasan['rating']."/5</br>
-			<b>Ulasan:</b></br>
-			".nl2br($ulasan['review'])."
-			</td>";
-			echo "</tr>";
+			echo "<td class=isiul> 
+						<b>Rating:</b> ".$ulasan['rating']."/5</br>
+						<b>Ulasan:</b>";
+						if($ulasan['review']!=NULL){
+							echo"</br>" . nl2br($ulasan['review']) . "";
+						} else {
+							echo" -";
+						} echo"
+					</td>
+					</tr>";
 			}
+		}
 		?>
 	</tbody>
 	</table>
-
-	<?php if(isset($_GET['status'])): ?>
-	<p>
-		<?php
-			if ($_GET['status'] == 'sukses'){
-				echo "Pendaftaran siswa baru berhasil!";
-			} else if ($_GET['status'] == 'gagal'){
-				echo "Pendaftaran gagal!";
-			} 
-		?>
-	</p>
-	<?php endif; ?>
+	</div>
 
 	</body>
 </html>
