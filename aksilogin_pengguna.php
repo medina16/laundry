@@ -1,24 +1,28 @@
 <?php
 include("configbaru.php");
-// cek apakah tombol login sudah diklik atau blum?
+// cek apakah tombol 'Login_user' sudah diklik
 if(isset($_POST['Login_user'])){
+	session_start();
+	session_destroy();
 
-	// ambil data dari formulir
+	// ambil data login pengguna
 	$email = $_POST['email'];
 	$password = $_POST['password'];
 
-	// buat query
+	// lihat apakah pasangan email dan password terdapat pada database dan mengambil idpem
   	$loggedin_user = pg_query("SELECT email, password, iduser FROM pengguna WHERE email='$email' AND password='$password'");
 	$cariid_user = pg_fetch_array($loggedin_user);
 	$iduser = $cariid_user['iduser'];
 
 	// apakah pasangan email dan password terdapat dalam database?
 	if(pg_num_rows($loggedin_user) == 0) {
-		// kalau gagal alihkan ke halaman loginp.php dengan cek_owner=salah
+		// kalau tidak, alihkan ke halaman loginp.php dengan cek_owner=salah
 		header('Location: page_login.php?cek_user=salah');
 	} else {
-		// kalau berhasil alihkan ke halaman pemilikk.php
-		header("Location: page_pengguna.php?iduser=".$iduser."");
+		// kalau ada, mulai sesi, set iduser, alihkan ke halaman pengguna.php
+		session_start();
+		$_SESSION["iduser"] = $iduser;
+		header("Location: page_pengguna.php");
 	}
 
 } else {
