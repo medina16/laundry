@@ -17,6 +17,7 @@ include ("configbaru.php");
 <html>
 <head>
 <title>Laundry - Edit Data</title>
+<link rel="stylesheet" href="stylesheet.css">
 </head>
 
 <body>
