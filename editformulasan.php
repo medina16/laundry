@@ -21,6 +21,7 @@ if(isset($_POST['editulasan'])){
 <html>
 <head>
 <title>Laundry - Edit Ulasan</title>
+<link rel="stylesheet" href="stylesheet.css">
 </head>
 
 <body>
