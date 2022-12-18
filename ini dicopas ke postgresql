@@ -22,8 +22,8 @@ CREATE TABLE Ulasan(
 idlau serial not null,
 idul serial,
 iduser serial not null,
-tanggal timestamp without time zone,
-rating integer,
+tanggal timestamp without time zone not null,
+rating integer not null,
 review varchar(250)
 );
 
