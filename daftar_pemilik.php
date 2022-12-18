@@ -3,6 +3,7 @@
 <head>
 	<title>Laundry - Daftar Sebagai Pemilik Usaha</title>
 	<link rel="stylesheet" href="stylesheet.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;1,600&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -74,7 +75,7 @@
 		</p>
 		<p>
 			<label for="tarif">Tarif Kiloan Minimum</label></br>
-			<input type="text" name="tarif" placeholder="Rp/kg" required/>
+			<input type="number" name="tarif" placeholder="Rp/kg" required/>
 		</p>
 		<p>
 			<label for="rincian">Rincian Harga</label></br>
