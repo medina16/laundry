@@ -9,7 +9,7 @@
 <body>
 		<div class="konten">
 			<div class="intro">
-				<h1>Laundry</h1>
+				<h1>BogorBinatu</h1>
 				<p>Daftarkan usaha laundry Anda atau cari dan beri ulasan untuk laundry-laundry di Kabupaten Bogor!</p>
 		</div>
 	<nav>
