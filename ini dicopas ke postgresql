@@ -7,7 +7,7 @@ idpem serial,
 email varchar(255) not null,
 password varchar(16) not null,
 nama varchar(64) not null,
-sex varchar(10),
+sex varchar(10) not null,
 kontak varchar(64) not null
 );
 
@@ -29,12 +29,12 @@ review varchar(250)
 
 CREATE TABLE laundryan(
 idlau serial,
-namaus varchar(255),
-alamat varchar(255),
-kelurahan varchar(64),
-kontak varchar(30),
-Tarif varchar(64),
-rincian varchar(200),
+namaus varchar(255) not null,
+alamat varchar(255) not null,
+kelurahan varchar(64) not null,
+kontak varchar(30) not null,
+Tarif int not null not null,
+rincian varchar(200) not null,
 idpem serial not null
 );
 
