@@ -22,7 +22,7 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Laundry - Edit Data</title>
+	<title>BogorBinatu - Edit Data</title>
 	<link rel="stylesheet" href="stylesheet.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;1,600&display=swap" rel="stylesheet">
 </head>
