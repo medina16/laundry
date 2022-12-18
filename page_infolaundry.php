@@ -143,7 +143,8 @@
 			$ambilnama = pg_fetch_array($querynama);
 			$nama = $ambilnama['nama'];
 				if ($nama != $ambilnamauser['nama']) {
-					echo "<td class=ulasan>
+					echo "<tr>
+						<td class=ulasan>
 						Ulasan dari </br><b>" . $nama . "</b></br>
 						" . $ulasan['tanggal'] . "";
 					echo "</td>";
